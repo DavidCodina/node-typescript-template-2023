@@ -1,0 +1,32 @@
+{
+  // Currently not using ts-node, but if you are and using ESM, this is important.
+  // "ts-node": { "esm": true },
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext", // "ESNEXT"
+    // "lib": [],
+    "allowJs": true,
+    "checkJs": false,
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "removeComments": true,
+    "strict": true,
+    // Used "node" originally, but "NodeNext" will also work.
+    "moduleResolution": "NodeNext",
+    "baseUrl": "src",
+    // I'm using ts-alias because tsconfig-paths didn't work for module aliases. You may run into issues with jest:
+    // https://medium.com/@fmoessle/typescript-paths-with-ts-node-ts-node-dev-and-jest-671deacf6428
+    "paths": {
+      "utils/*": ["utils/*"]
+    },
+    // See Mike North's 'Intermediate Typescript' for why you might not want "esModuleInterop": true
+    // This may be needed for imports like import fs from 'fs' when module and moduleResolution
+    //  are not using "NodeNext". However, for now it seems to be okay to omit it.
+    // "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
